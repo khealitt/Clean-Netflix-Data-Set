@@ -54,6 +54,33 @@ ax.set_ylim(0, 20)
 plt.xticks(rotation=45, ha='right', fontsize=9)
 plt.tight_layout()
 
+
+
+top_countries =df['country'].value_counts().head(10).reset_index()
+top_countries.columns = ['countries','count']
+
+fig,ax = plt.subplots(figsize=(8, 5))
+sns.barplot(
+    data=top_countries,
+    x='countries',
+    y='count',
+    hue='countries',
+    palette='YlOrRd_r',  # Warm red-to-yellow palette
+    legend=False,
+    ax=ax,
+)
+
+ax.set_title(
+    "Top 10 countries with the most movies produced showcased on netflix",
+    fontsize=12,
+    fontweight='bold',
+    pad=12,
+)
+ax.yaxis.set_major_locator(MultipleLocator(500))
+plt.xticks(rotation=45, ha='right', fontsize=9)
+plt.tight_layout()
+
 plt.show()
+
 
 # %%
